@@ -27,6 +27,7 @@ namespace Prueba.Entity
 
         [StringLength(500)]
         public string FeaturedImages { get; set; }
-        public bool Active { get; set; }
+
+        public bool? Active { get; set; }
     }
 }

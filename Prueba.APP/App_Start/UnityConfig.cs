@@ -30,8 +30,6 @@ namespace Prueba.APP
             var mapperConfig = MapperHelper.InitializeAutoMapper();
             var mapper = mapperConfig.CreateMapper();
             container.RegisterType<IMapper, Mapper>(new InjectionConstructor(mapperConfig));
-            //container.RegisterInstance(mapper, Activator.CreateInstance<T>());
-            //container.RegisterType<IMapper, Mapper>();
 
             //Business
             container.RegisterType<IProductBL, ProductBL>();

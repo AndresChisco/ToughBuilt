@@ -33,13 +33,6 @@ namespace Prueba.DAL.Contexts
             modelBuilder.Entity<Product>()
                 .Property(e => e.FeaturedImages)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Product>()
-                .Property(e => e.FeaturedImages)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Product>()
-                .Property(e => e.Active);
         }
     }
 }
