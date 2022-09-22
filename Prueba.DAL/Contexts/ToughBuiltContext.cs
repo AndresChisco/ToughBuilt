@@ -1,9 +1,7 @@
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using System.Linq;
+using Prueba.Entity;
 
-namespace Prueba.Entity
+namespace Prueba.DAL.Contexts
 {
     public partial class ToughBuiltContext : DbContext
     {
@@ -17,24 +15,31 @@ namespace Prueba.Entity
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>()
-                .Property(e => e.name)
+                .Property(e => e.Name)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Product>()
-                .Property(e => e.description)
+                .Property(e => e.Description)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Product>()
-                .Property(e => e.price)
+                .Property(e => e.Price)
                 .HasPrecision(10, 2);
 
             modelBuilder.Entity<Product>()
-                .Property(e => e.featuredCharacteristics)
+                .Property(e => e.FeaturedCharacteristics)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Product>()
-                .Property(e => e.feaaturedImages)
+                .Property(e => e.FeaturedImages)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.FeaturedImages)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.Active);
         }
     }
 }

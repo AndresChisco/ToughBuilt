@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Prueba.BLL</RootNamespace>
     <AssemblyName>Prueba.BLL</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -42,7 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementatios\ProductBL.cs" />
+    <Compile Include="Interfaces\IProductBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Prueba.DAL\Prueba.DAL.csproj">
+      <Project>{b45c52a6-e10b-4411-b61e-8e7d68867d80}</Project>
+      <Name>Prueba.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prueba.Entity\Prueba.Entity.csproj">
+      <Project>{B9A690DB-FA35-47E8-9EE4-F4CA42FB422D}</Project>
+      <Name>Prueba.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
