@@ -4,13 +4,15 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@section styles{
+    <link href="~/Content/DataTable/jquery.dataTables.min.css" rel="stylesheet" />
+}
 <h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="tableProducts">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -62,3 +64,13 @@
 }
 
 </table>
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/DataTable/jquery.dataTables.min.js"></script>
+    @*<script type="text/javascript" src="~/Scripts/Site/Products/ProductIndex.js"></script>*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tableProducts").DataTable();
+        });
+    </script>
+}
