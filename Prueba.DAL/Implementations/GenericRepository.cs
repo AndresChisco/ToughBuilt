@@ -11,6 +11,11 @@ namespace Prueba.DAL.Implementations
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly ToughBuiltContext _toughBuiltContext;
+
+        public GenericRepository(ToughBuiltContext toughBuiltContext)
+        {
+            _toughBuiltContext = toughBuiltContext;
+        }
         public async Task<T> GetAsync(Expression<Func<T, bool>> filter)
         {
             T entidad = await _toughBuiltContext.Set<T>().FirstOrDefaultAsync(filter);

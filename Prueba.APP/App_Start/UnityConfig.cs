@@ -6,6 +6,10 @@ using System.Web.Mvc;
 using Unity;
 using Unity.Lifetime;
 using Unity.Mvc5;
+using AutoMapper;
+using Prueba.APP.Automapper;
+using Unity.Injection;
+using System;
 
 namespace Prueba.APP
 {
@@ -21,6 +25,13 @@ namespace Prueba.APP
             // e.g. container.RegisterType<ITestService, TestService>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+
+            //Mapper
+            var mapperConfig = MapperHelper.InitializeAutoMapper();
+            var mapper = mapperConfig.CreateMapper();
+            container.RegisterType<IMapper, Mapper>(new InjectionConstructor(mapperConfig));
+            //container.RegisterInstance(mapper, Activator.CreateInstance<T>());
+            //container.RegisterType<IMapper, Mapper>();
 
             //Business
             container.RegisterType<IProductBL, ProductBL>();

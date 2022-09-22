@@ -228,7 +228,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Automapper\AutoMapperProfile.cs" />
+    <Compile Include="Automapper\MapperHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -271,6 +274,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -296,6 +300,10 @@
     <ProjectReference Include="..\Prueba.DAL\Prueba.DAL.csproj">
       <Project>{b45c52a6-e10b-4411-b61e-8e7d68867d80}</Project>
       <Name>Prueba.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prueba.Entity\Prueba.Entity.csproj">
+      <Project>{B9A690DB-FA35-47E8-9EE4-F4CA42FB422D}</Project>
+      <Name>Prueba.Entity</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

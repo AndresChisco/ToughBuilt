@@ -10,6 +10,6 @@ namespace Prueba.BLL.Interfaces
         Task<Product> SetAsync(Product entity);
         Task<bool> UpdateAsync(int id, Product entity);
         Task<bool> RemoveAsync(int id);
-        Task<List<Product>> GetListAsync();
+        Task<IEnumerable<Product>> GetListAsync();
     }
 }

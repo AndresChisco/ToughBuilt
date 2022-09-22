@@ -10,7 +10,6 @@ namespace Prueba.BLL.Implementatios
     public class ProductBL : IProductBL
     {
         private readonly IGenericRepository<Product> _genericRepository;
-        private bool respuesta;
 
         public ProductBL(IGenericRepository<Product> genericRepository)
         {
@@ -60,10 +59,10 @@ namespace Prueba.BLL.Implementatios
 
             return true;
         }
-        public async Task<List<Product>> GetListAsync()
+        public async Task<IEnumerable<Product>> GetListAsync()
         {
             IQueryable<Product> query = await _genericRepository.GetListAsync();
-            return query.ToList();
+            return query.ToArray();
         }
     }
 }
