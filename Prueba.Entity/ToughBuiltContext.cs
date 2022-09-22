@@ -1,16 +1,40 @@
-﻿using Prueba.Entity.Entities;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Linq;
 
 namespace Prueba.Entity
 {
-    internal class ToughBuiltContext : DbContext
+    public partial class ToughBuiltContext : DbContext
     {
-        private const string connectionString = "Data Source=PREDATOR;Initial Catalog=ToughBuilt;Integrated Security=true";
-
-        public ToughBuiltContext():base(connectionString)
+        public ToughBuiltContext()
+            : base("name=ToughBuiltContext")
         {
-
         }
-        public DbSet<Product> Products { get; set; }
+
+        public virtual DbSet<Product> Products { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .Property(e => e.name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.description)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.price)
+                .HasPrecision(10, 2);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.featuredCharacteristics)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.feaaturedImages)
+                .IsUnicode(false);
+        }
     }
 }
