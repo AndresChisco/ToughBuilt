@@ -1,25 +1,23 @@
 ﻿@model IEnumerable<Prueba.APP.Models.ViewModels.ProductViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Products";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section styles{
     <link href="~/Content/DataTable/jquery.dataTables.min.css" rel="stylesheet" />
 }
-<h2>Index</h2>
-<div class="row">
-    <div class="card shadow mb-4">
-        <div class="card-header">Products</div>
-        <div class="card-body"></div>
-    </div>
-</div>
-<p>
-    @Html.ActionLink("Create New", "Create", new { @class = "btn btn-primary btn-md" })
-</p>
+<h2>Products</h2>
+<br />
 <table id="tableProducts" class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FeaturedImages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -39,33 +37,143 @@
         </tr>
     </thead>
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FeaturedCharacteristics)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-primary btn-md" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-success btn-md"}) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger btn-md" })
-        </td>
-    </tr>
+    var images = item.FeaturedImages.Split(';');
+    //var ruta = $"~/Resources/Images/Products/{@item.Name}/{@item.FeaturedImages}";
+<tr>
+    <td>
+        @*@Html.DisplayFor(modelItem => item.FeaturedImages, new { @style="display:none" })*@
+        @Html.Raw($"<img src='/Resources/Images/Products/{@item.Name}/{images[0]}' alt='{images[0]}' style='width: 50px; height: 60px' />")
+        @*<img src="~/Resources/Images/Products/@item.Name/@item.FeaturedImages" alt="@item.FeaturedImages" style="width:50px;height:60px" />*@
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Stock)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FeaturedCharacteristics)
+    </td>
+    <td>
+        <button class="btn btn-info btn-sm modalTrigger" type="button" data-id="@item.Id" @*data-toggle="modal" data-target="#ProductDetails"*@>Details</button>
+    </td>
+</tr>
 }
 
 </table>
 
+<div id="ProductDetailsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ProductDetailsModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ProductDetailsTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="carousel" class="carousel slide" data-ride="carousel">
+                            @*<ol id="carouselList" class="carousel-indicators">
+                                <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselIndicators" data-slide-to="2"></li>
+                            </ol>*@
+                            <div id="carouselImages" class="carousel-inner">
+                                @*<div class="carousel-item active">
+                                    <img class="d-block w-100" src="..." alt="First slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="..." alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="..." alt="Third slide">
+                                </div>*@
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                @Html.Label("Description:", new { @class = "control-label col-md-6" })
+                            </div>
+                            <div class="form-group col-sm-8">
+                                @Html.Label(" ", new { Id = "txtDescription", @class = "control-label col-md-6" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                @Html.Label("Characteristics", new { @class = "control-label col-md-6" })
+                            </div>
+                            <div class="form-group col-sm-8">
+                                @Html.Label(" ", new { id = "txtCharacteristics", @class = "control-label col-md-6" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                @Html.Label("Price:", new { @class = "control-label col-md-6" })
+                            </div>
+                            <div class="form-group col-sm-8">
+                                @Html.Label(" ", new { id = "txtPrice", @class = "control-label col-md-6" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                @Html.Label("Stock:", new { @class = "control-label col-md-6" })
+                            </div>
+                            <div class="form-group col-sm-8">
+                                @Html.Label(" ", new { id = "txtStock", @class = "control-label col-md-6" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section scripts{
     <script src="~/Scripts/DataTable/jquery.dataTables.min.js"></script>
     <script src="~/Scripts/Site/Product/ProductIndex.js"></script>
+    <script type="text/javascript">
+        function getProduct(id) {
+            return new Promise((resolve) => {
+                var product;
+                $.ajax({
+                    url: '@Url.Action("getProduct", "Product")',
+                    type: "post",
+                    async: true,
+                    contentType: "application/x-www-form-urlencoded",
+                    datatype: "json",
+                    data: { "id": id },
+                    success: function (res) { product = res.product; }
+                });
+                setTimeout(() => {
+                    resolve(product);
+                    }, 500
+                );
+            });
+        }
+    </script>
 }

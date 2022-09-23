@@ -247,6 +247,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Resources\Images\Products\Computadora ASUS\Computadora ASUS_001.jpg" />
+    <Content Include="Resources\Images\Products\Computadora DELL\Computadora DELL_001.jpg" />
+    <Content Include="Resources\Images\Products\Laptop ASUS ROG Zephyrus\Laptop ASUS ROG Zephyrus_001.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />

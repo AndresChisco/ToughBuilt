@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Prueba.APP.Models.ViewModels
 {
@@ -24,6 +20,7 @@ namespace Prueba.APP.Models.ViewModels
         [StringLength(500)]
         public string FeaturedCharacteristics { get; set; }
 
+        [Display(Name ="Image")]
         [StringLength(500)]
         public string FeaturedImages { get; set; }
     }

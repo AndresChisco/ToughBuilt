@@ -27,10 +27,10 @@ namespace Prueba.APP.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> ProductList()
+        public async Task<JsonResult> getProduct(int id)
         {
-            IEnumerable<ProductViewModel> productsVM = (IEnumerable<ProductViewModel>)await Index();
-            return Json(new { data = productsVM });
+            Product productsVM = await _productBL.GetAsync(id);
+            return Json(new { product = productsVM });
         }
     }
 }
