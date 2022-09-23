@@ -250,6 +250,15 @@
     <Content Include="Resources\Images\Products\Computadora ASUS\Computadora ASUS_001.jpg" />
     <Content Include="Resources\Images\Products\Computadora DELL\Computadora DELL_001.jpg" />
     <Content Include="Resources\Images\Products\Laptop ASUS ROG Zephyrus\Laptop ASUS ROG Zephyrus_001.jpg" />
+    <Content Include="Resources\Images\Products\Laptop Matebook D15\001_laptop.jpg" />
+    <Content Include="Resources\Images\Products\Laptop Matebook D15\002_laptop.jpg" />
+    <Content Include="Resources\Images\Products\Laptop Matebook D15\003_laptop.jpg" />
+    <Content Include="Resources\Images\Products\Monitor AOC Gamer\001_monitor.jpg" />
+    <Content Include="Resources\Images\Products\Monitor AOC Gamer\002_monitor.jpg" />
+    <Content Include="Resources\Images\Products\Monitor AOC Gamer\003_monitor.jpg" />
+    <Content Include="Resources\Images\Products\Monitor SAMSUNG G27\001_monitor.jpg" />
+    <Content Include="Resources\Images\Products\Monitor SAMSUNG G27\002_monitor.jpg" />
+    <Content Include="Resources\Images\Products\Monitor SAMSUNG G27\003_monitor.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
