@@ -17,6 +17,7 @@ namespace Prueba.APP.Models.ViewModels
 
         public int? Stock { get; set; }
 
+        [Display(Name = "Features")]
         [StringLength(500)]
         public string FeaturedCharacteristics { get; set; }
 

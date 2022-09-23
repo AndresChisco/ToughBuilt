@@ -6,7 +6,7 @@ namespace Prueba.DAL.Contexts
     public partial class ToughBuiltContext : DbContext
     {
         public ToughBuiltContext()
-            : base("name=ToughBuiltConection")
+            : base("name=DbConection")
         {
         }
 
