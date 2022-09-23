@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section styles{
-    <link href="~/Content/DataTable/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/Datatable/jquery.dataTables.min.css" rel="stylesheet" />
 }
 <h2>Products</h2>
 <br />
@@ -14,6 +14,9 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FeaturedImages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -35,9 +38,12 @@
     </thead>
 @foreach (var item in Model) {
     var images = item.FeaturedImages.Split(';');
-<tr>
+<tr data-id="@item.Id">
     <td>
-        @Html.Raw($"<img src='/Resources/Images/Products/{@item.Name}/{images[0]}' alt='{images[0]}' style='width: 60px; height: 80px' />")
+        @Html.Raw($"<img src='/Resources/Images/Products/{@item.Name}/{images[0]}' alt='{images[0]}' style='width: 50px; height: 60px' />")
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Name)
@@ -55,7 +61,7 @@
         @Html.DisplayFor(modelItem => item.FeaturedCharacteristics)
     </td>
     <td>
-        <button class="btn btn-info btn-sm modalTrigger" type="button" data-id="@item.Id">Details</button>
+        <button class="btn btn-info btn-sm modalTrigger" type="button" data-id="@item.Id" @*data-toggle="modal" data-target="#ProductDetails"*@>Details</button>
     </td>
 </tr>
 }
