@@ -11,62 +11,51 @@ $(document).ready(function () {
     );
 });
 
-$("#tableProducts").on("click", "tr", async function () {
-    var id = parseInt(productTable.row(this).data()[1]);
-    var datosProducto = await getProduct(id);
-    console.log(datosProducto);
-    var images = datosProducto.FeaturedImages.split(';');
-    console.log("nombres imagenes:", images)
-    //$("#carouselList").html("");
-    $("#carouselImages").html("");
-    var active = "";
-    $.each(images, function (index, value) {
-        if (index === 0)
-            active = "active"
-        else
-            active = "";
-        //var optionCarousel = $("#carouselList").html();
-        var imagesCarousel = $("#carouselImages").html();
-        console.log("contenido del carrusel: ", imagesCarousel)
-        //var newOption = '<li data-target="#carouselIndicators" data-slide-to="' + index + '" class="' + active + '"></li>';
-        var newImage = '<div class="carousel-item ' + active + '"><img class="d-block w-100" src="/Resources/Images/Products/' + datosProducto.Name + '/' + value + '" alt = "' + value + '" style="width: 450px; height: 500px" /></div>'
-        //$("#carouselList").html(optionCarousel + newOption);
-        $("#carouselImages").html(imagesCarousel + newImage);
-        $('.carousel').carousel(); 
-    });
-    $("#carouselImages").html();
-    $("#ProductDetailsTitle").text(productTable.row(this).data()[2]);
-    $("#txtDescription").text(productTable.row(this).data()[3]);
-    $("#txtCharacteristics").text(productTable.row(this).data()[6]);
-    $("#txtPrice").text(parseFloat(productTable.row(this).data()[4]));
-    $("#txtStock").text(parseInt(productTable.row(this).data()[5]));
-    $('#ProductDetailsModal').modal("show");
-});
+//$("#tableProducts").on("click", "tr", async function () {
+//    var id = parseInt(productTable.row(this).data()[1]);
+//    var datosProducto = await getProduct(id);
+//    var images = datosProducto.FeaturedImages.split(';');
+//    $(".carousel-inner").html("");
+//    var active = "";
+//    $.each(images, function (index, value) {
+//        if (index === 0)
+//            active = "active"
+//        else
+//            active = "";
+//        var imagesCarousel = $(".carousel-inner").html();
+//        var newImage = '<div class="carousel-item ' + active + '"><img class="d-block w-100" src="/Resources/Images/Products/' + datosProducto.Name + '/' + value + '" alt = "' + value + '" style="width: 450px; height: 500px" /></div>'
+//        $(".carousel-inner").html(imagesCarousel + newImage);
+//        $('.carousel').carousel(); 
+//    });
+//    $("#ProductDetailsTitle").text(datosProducto.Name);
+//    $("#txtDescription").text(datosProducto.Description);
+//    $("#txtCharacteristics").text(datosProducto.FeaturedCharacteristics);
+//    $("#txtPrice").text(datosProducto.Price);
+//    $("#txtStock").text(datosProducto.Stock);
+//    $('#ProductDetailsModal').modal("show");
+//});
 
 $(".modalTrigger").on("click", async function () {
-    var id = parseInt(productTable.row(this).data()[1]);
+
+    var id = $(this).data("id");
     var datosProducto = await getProduct(id);
-    console.log(datosProducto);
     var images = datosProducto.FeaturedImages.split(';');
-    console.log("nombres imagenes:", images)
-    $("#carouselImages").html("");
+    $(".carousel-inner").html("");
     var active = "";
     $.each(images, function (index, value) {
         if (index === 0)
             active = " active"
         else
             active = "";
-        var imagesCarousel = $("#carouselImages").html();
-        console.log("contenido del carrusel: ", imagesCarousel)
+        var imagesCarousel = $(".carousel-inner").html();
         var newImage = '<div class="carousel-item' + active + '"><img class="d-block w-100" src="/Resources/Images/Products/' + datosProducto.Name + '/' + value + '" alt = "' + value + '" style="width: 250px; height: 300px" /></div>'
-        $("#carouselImages").html(imagesCarousel + newImage);
+        $(".carousel-inner").html(imagesCarousel + newImage);
         $('.carouselImages').carousel();
     });
-    $("#carouselImages").html();
-    $("#ProductDetailsTitle").text(productTable.row(this).data()[2]);
-    $("#txtDescription").text(productTable.row(this).data()[3]);
-    $("#txtCharacteristics").text(productTable.row(this).data()[6]);
-    $("#txtPrice").text(parseFloat(productTable.row(this).data()[4]));
-    $("#txtStock").text(parseInt(productTable.row(this).data()[5]));
+    $("#ProductDetailsTitle").text(datosProducto.Name);
+    $("#txtDescription").text(datosProducto.Description);
+    $("#txtCharacteristics").text(datosProducto.FeaturedCharacteristics);
+    $("#txtPrice").text(datosProducto.Price);
+    $("#txtStock").text(datosProducto.Stock);
     $('#ProductDetailsModal').modal("show");
 });
