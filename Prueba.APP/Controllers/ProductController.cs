@@ -25,5 +25,12 @@ namespace Prueba.APP.Controllers
             IEnumerable<ProductViewModel> productsVM = _mapper.Map<IEnumerable<ProductViewModel>>(products);
             return View(productsVM);
         }
+
+        [HttpPost]
+        public async Task<JsonResult> ProductList()
+        {
+            IEnumerable<ProductViewModel> productsVM = (IEnumerable<ProductViewModel>)await Index();
+            return Json(new { data = productsVM });
+        }
     }
 }

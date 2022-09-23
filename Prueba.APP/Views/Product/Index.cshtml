@@ -8,33 +8,36 @@
     <link href="~/Content/DataTable/jquery.dataTables.min.css" rel="stylesheet" />
 }
 <h2>Index</h2>
-
+<div class="row">
+    <div class="card shadow mb-4">
+        <div class="card-header">Products</div>
+        <div class="card-body"></div>
+    </div>
+</div>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { @class = "btn btn-primary btn-md" })
 </p>
-<table class="tableProducts">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FeaturedCharacteristics)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FeaturedImages)
-        </th>
-        <th></th>
-    </tr>
-
+<table id="tableProducts" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FeaturedCharacteristics)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
 @foreach (var item in Model) {
     <tr>
         <td>
@@ -53,12 +56,9 @@
             @Html.DisplayFor(modelItem => item.FeaturedCharacteristics)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FeaturedImages)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-primary btn-md" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-success btn-md"}) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger btn-md" })
         </td>
     </tr>
 }
@@ -66,11 +66,6 @@
 </table>
 
 @section scripts{
-    <script type="text/javascript" src="~/Scripts/DataTable/jquery.dataTables.min.js"></script>
-    @*<script type="text/javascript" src="~/Scripts/Site/Products/ProductIndex.js"></script>*@
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#tableProducts").DataTable();
-        });
-    </script>
+    <script src="~/Scripts/DataTable/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/Site/Product/ProductIndex.js"></script>
 }
