@@ -16,9 +16,6 @@
                 @Html.DisplayNameFor(model => model.FeaturedImages)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
@@ -36,35 +33,33 @@
             <th></th>
         </tr>
     </thead>
-@foreach (var item in Model) {
-    var images = item.FeaturedImages.Split(';');
-<tr data-id="@item.Id">
-    <td>
-        @Html.Raw($"<img src='/Resources/Images/Products/{@item.Name}/{images[0]}' alt='{images[0]}' style='width: 50px; height: 60px' />")
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Id)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Description)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Price)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Stock)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.FeaturedCharacteristics)
-    </td>
-    <td>
-        <button class="btn btn-info btn-sm modalTrigger" type="button" data-id="@item.Id" @*data-toggle="modal" data-target="#ProductDetails"*@>Details</button>
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        var images = item.FeaturedImages.Split(';');
+        <tr>
+            <td>
+                @Html.Raw($"<img src='/Resources/Images/Products/{@item.Name}/{images[0]}' alt='{images[0]}' style='width: 60px; height: 80px' />")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeaturedCharacteristics)
+            </td>
+            <td>
+                <button class="btn btn-info btn-sm modalTrigger" type="button" data-id="@item.Id">Details</button>
+            </td>
+        </tr>
+    }
 
 </table>
 
