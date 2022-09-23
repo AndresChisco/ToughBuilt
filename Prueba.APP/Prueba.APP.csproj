@@ -266,6 +266,7 @@
     <Content Include="Resources\Images\Products\Monitor SAMSUNG G27\003_monitor.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\Datatable\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
